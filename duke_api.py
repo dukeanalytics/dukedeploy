@@ -49,8 +49,8 @@ class api:
 
     def deploy_model(self, model_object,model_name,predict=None):
         if not check_model_name(model_name):
-            print 'deploy: model_name must contain alpha-numeric and underscore characters only.'
-            return None
+            return json.dumps({"deploy":"deploy: model_name must contain alpha-numeric and underscore characters only."})
+
         temp_file = tempfile.NamedTemporaryFile(prefix=model_name+'-', suffix='.pkl',mode='w+b+r',delete=False)
         cPickle.dump(model_object,temp_file, protocol=cPickle.HIGHEST_PROTOCOL)
 
@@ -70,32 +70,25 @@ class api:
 
             r = requests.post('%s/deploy/%s/%s' % (self.url,self.user_name,self.api_key), files=dfiles)
         else:
-            print "Model size exceeds 25Mb. Please try to reduce."
-            return None
+            return json.dumps({"deploy":"Model size exceeds 25Mb. Please try to reduce."})
 
         temp_file.close()
         os.remove(temp_file.name)
     
         if r.status_code != 200:
-            print 'deploy: API returned status %s: %s' % (r.status_code, r.text)
-            return False
+            return json.loads(r.text)
         else:
-            print r.text
-            return True
+            return json.loads(r.text)
+
 
     def predict(self, model_name,new_data):
         new_data_format = json.dumps(new_data.tolist())
         data = {'Ext':'.pkl','Model':model_name,'New_Data': new_data_format}
         r = requests.post('%s/predict/%s/%s' % (self.url,self.user_name,self.api_key), data=data)
         if r.status_code != 200:
-            print 'predict: API returned status %s: %s' % (r.status_code, r.text)
-            return None
+            return json.loads(r.text)
+        else:
+            return json.loads(r.text)
 
-        response_object = json.loads(r.text)
-		
-        if 'message' in response_object:
-            print 'predict: message from API: %s' % response_object['message']
-            return None
-
-        return response_object
+        
 
