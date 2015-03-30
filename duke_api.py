@@ -8,7 +8,6 @@ import cPickle
 import re
 import inspect
 import copy_reg
-import marshal
 import types
  
 def code_ctor(*args):
@@ -65,8 +64,6 @@ class api:
         
         if model_size < 25000000:
             dfiles = {'files': (os.path.basename(temp_file.name), open(temp_file.name, 'rb')) }
-            #data = {'App-ID': self.user_name,
-		    #         'Key': self.api_key}
 
             r = requests.post('%s/deploy/%s/%s' % (self.url,self.user_name,self.api_key), files=dfiles)
         else:
@@ -83,7 +80,7 @@ class api:
 
     def predict(self, model_name,new_data):
         new_data_format = json.dumps(new_data.tolist())
-        data = {'Ext':'.pkl','Model':model_name,'New_Data': new_data_format}
+        data = {'Model':model_name,'New_Data': new_data_format}
         r = requests.post('%s/predict/%s/%s' % (self.url,self.user_name,self.api_key), data=data)
         if r.status_code != 200:
             return json.loads(r.text)
