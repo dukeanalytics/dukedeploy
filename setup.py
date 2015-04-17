@@ -12,7 +12,7 @@ setup(
     author_email="duke@dukeanalytics.com",
 
     # Packages
-    #packages=["dukedeploy"],
+    packages=["dukedeploy"],
 
     # Include additional files into the package
     include_package_data=True,
