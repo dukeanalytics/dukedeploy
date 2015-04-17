@@ -5,8 +5,6 @@ import requests
 import urllib
 import tempfile
 import cPickle
-import re
-import inspect
 import copy_reg
 import types
  
