@@ -1,32 +1,31 @@
+
 from distutils.core import setup
 
 setup(
-    # Application name:
     name="dukedeploy",
-
-    # Version number (initial):
-    version="0.1.0",
-
-    # Application author details:
+    version="0.1.3",
     author="Duke Analytics",
     author_email="duke@dukeanalytics.com",
-
-    # Packages
     packages=["dukedeploy"],
-
-    # Include additional files into the package
-    include_package_data=True,
-
-    # Details
     url="http://www.dukeanalytics.com/products/dukedeployPython.php",
+    license="MIT",
+    description="Predictive model deployment with Duke Analytics.",
+  classifiers=[
+        # How mature is this project? Common values are
+        #   3 - Alpha
+        #   4 - Beta
+        #   5 - Production/Stable
+        'Development Status :: 3 - Alpha',
 
-    #
-    # license="LICENSE.txt",
-    description="Useful towel-related stuff.",
+        # Indicate who your project is intended for
+        'Intended Audience :: Developers',
+        'Topic :: Software Development :: Build Tools',
 
-    # long_description=open("README.txt").read(),
-    # Dependent packages (distributions)
-    #install_requires=[
-    #    "flask",
-    #],
+        # Pick your license as you wish (should match "license" above)
+        'License :: OSI Approved :: MIT License',
+
+        # Specify the Python versions you support here. In particular, ensure
+        # that you indicate whether you support Python 2, Python 3 or both.
+        'Programming Language :: Python :: 2.7',
+    ]
 )
