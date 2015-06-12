@@ -1,5 +1,5 @@
 # dukedeploy
-This is an Python package which enables [deployment of Python machine learning and statistical models to the cloud using the Duke Analytics DukeDeploy API](http://www.dukeanalytics.com/products/dukedeployPython.php).
+This is a Python package which enables [deployment of Python machine learning and statistical models to the cloud using the Duke Analytics DukeDeploy API](http://www.dukeanalytics.com/products/dukedeployPython.php).
 
 From the command line: 
 ```
