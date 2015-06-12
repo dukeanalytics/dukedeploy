@@ -3,14 +3,15 @@ from distutils.core import setup
 
 setup(
     name="dukedeploy",
-    version="0.1.3",
+    version="0.1.5",
     author="Duke Analytics",
     author_email="duke@dukeanalytics.com",
     packages=["dukedeploy"],
     url="http://www.dukeanalytics.com/products/dukedeployPython.php",
     license="MIT",
     description="Predictive model deployment with Duke Analytics.",
-  classifiers=[
+    install_requires=["requests"],
+    classifiers=[
         # How mature is this project? Common values are
         #   3 - Alpha
         #   4 - Beta
